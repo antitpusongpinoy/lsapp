@@ -11,5 +11,9 @@
         $http.get('/getsampledata').then(function(response) {
             vm.data =response.data;
           });
+
+        vm.submit = function(){
+            console.log(vm.user);
+        }
     }
 })();

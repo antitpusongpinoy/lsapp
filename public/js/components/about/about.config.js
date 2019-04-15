@@ -7,8 +7,13 @@ angular
     function config($urlRouterProvider, $stateProvider){
         $stateProvider
             .state('about',{
-                url:'/about',       
-                templateUrl: 'js/components/about/template/about.template.html',
-                controller: 'AboutController as vm',
+                url:'/about',    
+                views: {
+                    'content@dashboard':{
+                        templateUrl: 'js/components/about/template/about.template.html',
+                        controller: 'AboutController as vm',
+                    }
+                },
+                parent: 'dashboard'
             });
     }

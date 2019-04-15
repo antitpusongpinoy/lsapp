@@ -2,8 +2,10 @@
 
 angular.module('dashboard',[
         'ngRoute',
-/*         'dashboard.main', */
+        'dashboard.main',
         'ui.router', 
         'home',
-        'about'
+        'about',
+        'map',
+        'selector'
     ]);

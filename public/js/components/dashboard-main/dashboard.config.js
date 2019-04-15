@@ -12,6 +12,9 @@
                 views: {
                     '':{
                         templateUrl:'js/components/dashboard-main/template/dashboard-main.template.html'
+                    },
+                    'navbar@dashboard':{
+                        templateUrl:'js/components/dashboard-main/template/dashboard-nav.template.html',
                     }
                 }
             });

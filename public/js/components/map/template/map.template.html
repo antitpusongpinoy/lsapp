@@ -1,0 +1,55 @@
+
+<!-- <toaster-container></toaster-container> -->
+<div class="container">
+<div class="row  justify-content-center" style="margin-top: 40px;">
+    <div class="col-9 col-sm-9 col-md-9 col-lg-9">
+        <div class="card text-grey">
+                <div class="card-header bg-primary text-white">
+                        <i class="fa fa-map"></i> Map
+                    </div>
+                    <div class="card-body">
+                        <form name="vm.mapFrm" ng-submit="">
+                            <div class="row">
+                                <div class="form-group col-md-7" ng-show="vm.dateEnabled">
+                                    <div class="card-title">Program</div>
+                                    <select selector
+                                        name="program"
+                                        options="vm.programs"
+                                        ng-init="vm.map.program = vm.map.program || vm.programs[0]"
+                                        label-attr="name"
+                                        require="true"
+                                        model="vm.map.program">
+                                        
+                                    </select>
+                                </div>
+        
+                                <div class="form-group col-md-3" ng-show="vm.dateEnabled">
+                                    Month
+                                    <select selector
+                                        name="month_from"
+                                        model="vm.map.month" 
+                                        ng-init = "vm.map.month = vm.months[0].num"
+                                        options="vm.months">
+                                    </select>
+                                </div> 
+        
+                                <div class="form-group col-md-2">
+                                    Year
+                                    <select selector 
+                                        class=""
+                                        name="year"  
+                                        >
+                                    </select> 
+                                </div> 
+                            </div> 
+        
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-info waves-effect" ng-show="!vm.isLoading"><i class="fa fa-check"></i> SUBMIT</button>
+                                <h1 ng-show="vm.isLoading"><i class="fa fa-spinner fa-spin text-info"></i></h1>                    
+                            </div>
+                        </form>
+                    </div>
+        </div>
+    </div>
+</div>
+</div>
