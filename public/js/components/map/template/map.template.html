@@ -10,8 +10,8 @@
                     <div class="card-body">
                         <form name="vm.mapFrm" ng-submit="">
                             <div class="row">
-                                <div class="form-group col-md-7" ng-show="vm.dateEnabled">
-                                    <div class="card-title">Program</div>
+                                <div class="form-group col-md-6" ng-show="vm.dateEnabled">
+                                    Program
                                     <select selector
                                         name="program"
                                         options="vm.programs"
@@ -29,6 +29,7 @@
                                         name="month_from"
                                         model="vm.map.month" 
                                         ng-init = "vm.map.month = vm.months[0].num"
+                                        label-attr="name"
                                         options="vm.months">
                                     </select>
                                 </div> 

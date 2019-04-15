@@ -88,6 +88,9 @@
 
         {{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script> --}}
 
+        <!-- Custom Input Select Directive for List Filtering and Mulitple Selections  -->
+        <link href="{{asset('bower_components/angular-selector/dist/angular-selector.css')}}" rel="stylesheet" type="text/css"/>
+        <script src="{{asset('bower_components/angular-selector/dist/angular-selector.js')}}"></script>
 
 
         <!-- Dashboard Application Scripts -->
@@ -113,9 +116,6 @@
         <script src="{{asset('js/components/dashboard-main/dashboard.module.js')}}"></script>
         <script src="{{asset('js/components/dashboard-main/dashboard.config.js')}}"></script>
 
-        <!-- Custom Input Select Directive for List Filtering and Mulitple Selections  -->
-        <link href="{{asset('bower_components/angular-selector/dist/angular-selector.css')}}" rel="stylesheet" type="text/css"/>
-        <script src="{{asset('bower_components/angular-selector/dist/angular-selector.js')}}"></script>
-
+        
     </body>
 </html>
