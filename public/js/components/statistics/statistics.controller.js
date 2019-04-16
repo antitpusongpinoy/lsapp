@@ -44,8 +44,9 @@
         };
         $http.get('api/get/submitted/years')
          .then(function(response){
-             alert(response.data);
-             
+             console.log(response.data);
+             vm.years = response.data;
+             vm.statsCriterions.year = vm.years[0];
          }).catch(function(response){
              console.log(response.data);
          });

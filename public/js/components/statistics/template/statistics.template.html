@@ -54,9 +54,14 @@
 
                             <div class="form-group col-md-2 col-2 col-sm-2 col-lg-2">
                                 Year
-                                <select selector class="" 
+                                <select selector 
+                                class="" 
                                 name="year"
+                                model="vm.statsCriterions.year"
+                                options = "vm.years"
+                                require="true"
                                 ng-init = "vm.statsCriterions.year = vm.statsCriterions.year || vm.years[vm.years.length-1]"
+                                
                                 >
                                 </select>
                             </div>
