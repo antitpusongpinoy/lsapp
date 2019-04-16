@@ -7,8 +7,8 @@
         <title>WAH Dashboard</title>
         <link rel="icon" href="{{asset('images/wah_logo.png') }}"/>
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
+       {{--  <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+ --}}
         <!-- Styles -->
         <style>
             html, body {
@@ -96,16 +96,16 @@
         <!-- Dashboard Application Scripts -->
         <script src="{{asset('js/components/app/app.module.js')}}"></script>
         <script src="{{asset('js/components/app/app.config.js')}}"></script>
-
+        
         <!-- Dashboard Home Scripts -->
         <script src="{{asset('js/components/home/home.module.js')}}"></script>
         <script src="{{asset('js/components/home/home.config.js')}}"></script>
         <script src="{{asset('js/components/home/home.controller.js')}}"></script> 
 
-        <!-- Dashboard about Scripts -->
-        <script src="{{asset('js/components/about/about.module.js')}}"></script>
-        <script src="{{asset('js/components/about/about.config.js')}}"></script>
-        <script src="{{asset('js/components/about/about.controller.js')}}"></script>
+        <!-- Dashboard statistics Scripts -->
+        <script src="{{asset('js/components/statistics/statistics.module.js')}}"></script>
+        <script src="{{asset('js/components/statistics/statistics.config.js')}}"></script>
+        <script src="{{asset('js/components/statistics/statistics.controller.js')}}"></script>
 
         <!-- Dashboard map Scripts -->
         <script src="{{asset('js/components/map/map.module.js')}}"></script>

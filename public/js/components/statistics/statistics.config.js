@@ -1,17 +1,17 @@
 'use strict';
 
 angular
-    .module('about')
+    .module('dashboard.statistics')
     .config(config);
 
     function config($urlRouterProvider, $stateProvider){
         $stateProvider
-            .state('about',{
-                url:'/about',    
+            .state('statistics',{
+                url:'/statistics',    
                 views: {
                     'content@dashboard':{
-                        templateUrl: 'js/components/about/template/about.template.html',
-                        controller: 'AboutController as vm',
+                        templateUrl: 'js/components/statistics/template/statistics.template.html',
+                        controller: 'StatisticsController as vm',
                     }
                 },
                 parent: 'dashboard'

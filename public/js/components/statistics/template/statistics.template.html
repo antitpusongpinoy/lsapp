@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row justify-content-center" style="margin-top: 40px;">
+        <div class="col-lg-9">
+            <div class="card text-grey">
+                <div class="card-header bg-primary text-white">
+                    <i class="fa fa-pie-chart"></i> Statistics
+                </div>
+                <div class="card-body">
+                    <form name="vm.statsForm" ng-submit="vm.getStats()">
+                        <div class="row">
+                            <div class="form-group col-md-4 col-4 col-sm-4 col-lg-4">
+                                Program
+                                <select selector
+                                name="program" 
+                                require="true"
+                                ng-init="vm.stat.program = vm.stat.program || vm.programs[0]"
+                                label-attr="name"
+                                options = "vm.programs"
+                                model="vm.stat.program"
+                                >
+                                </select>
+                                <!-- {{vm.stat.program.name}} for getting specific data -->
+                            </div>
+
+                            <!-- Report Date Month -->
+                            <div class="form-group col-md-6 col-6 col-sm-6 col-lg-6">
+                                Month
+                                <div class="row" name="month">
+                                    <div class="col-md-6 col-6 col-sm-6 col-lg-6">
+                                        <select selector 
+                                        name="month_from"
+                                        ng-init="vm.statsCriterions.month.to = vm.months[0].num"
+                                        model="vm.statsCriterions.month.to"
+                                        options="vm.months"
+                                        label-attr="name"
+                                        value-attr="num"
+                                        require="true">
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 col-6 col-sm-6 col-lg-6">
+                                        <select selector 
+                                        name="month_from"
+                                        ng-init="vm.statsCriterions.month.from = vm.months[0].num"
+                                        model="vm.statsCriterions.month.from"
+                                        options="vm.months"
+                                        label-attr="name"
+                                        value-attr="num"
+                                        require="true">
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-2 col-2 col-sm-2 col-lg-2">
+                                Year
+                                <select selector class="" 
+                                name="year"
+                                ng-init = "vm.statsCriterions.year = vm.statsCriterions.year || vm.years[vm.years.length-1]"
+                                >
+                                </select>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row float-right mt-3">
+                            <button type="submit" class="btn btn-info waves-effect btn-lg" ng-show="!vm.isLoading"><i
+                                    class="fa fa-check"></i> GENERATE</button>
+                            <h1 ng-show="vm.isLoading"><i class="fa fa-spinner fa-spin text-info"></i></h1>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
