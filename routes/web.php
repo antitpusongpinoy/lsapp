@@ -16,16 +16,6 @@ Route::get('/', 'IndexController@getIndex');
 Route::get('/getsampledata', 'Showdatacontroller@getData');
 Route::get('/about','Showdatacontroller@getData');
 
-/* dito kana magiiteract ng control with data */
-/* Route::get('/', 'PagesController@index');
-Route::get('/service', 'PagesController@services');
-Route::get('/about', 'PagesController@about');
-
-Route::get('/users/{id}/{name}', function($id, $name){
-    return 'this is user ' .$id. ' with an id of ' .$name;
+Route::group(['prefix' => 'api'], function(){
+    Route::get('get/submitted/years','Date\DatesController@getSubmittedYears');
 });
-
-Route::resource('posts','PostsController');
-
-
- */

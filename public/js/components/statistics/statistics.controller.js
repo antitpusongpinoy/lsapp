@@ -1,4 +1,4 @@
-(function(){
+
     'use strict';
 
     angular
@@ -42,5 +42,11 @@
                 'level':''
             }
         };
+        $http.get('api/get/submitted/years')
+         .then(function(response){
+             alert(response.data);
+             
+         }).catch(function(response){
+             console.log(response.data);
+         });
     }
-})();
