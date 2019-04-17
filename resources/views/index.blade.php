@@ -67,27 +67,31 @@
     
     <body ng-app="dashboard">
          <div class="h-100" ui-view=""></div>
+        
+        <link href="{{asset('bower_components/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">   
+        <link href="{{asset('imported_packages/mdbootstrap_jquery/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">     
+        <link href="{{asset('imported_packages/mdbootstrap_jquery/css/mdb.min.css')}}" rel="stylesheet" type="text/css">        
+        <script src="{{asset('node_modules/jquery/dist/jquery.min.js')}}"></script>
+        <script src="{{asset('imported_packages/mdbootstrap_jquery/js/popper.min.js')}}"></script>
+        <script src="{{asset('imported_packages/mdbootstrap_jquery/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('imported_packages/mdbootstrap_jquery/js/mdb.min.js')}}"></script>
+
         <!-- Dashboard Application Dependencies -->
         <script src="{{asset('bower_components/angular/angular.js')}}"></script>
         <script src="{{asset('bower_components/angular-route/angular-route.js')}}"></script>
         <script src="{{asset('bower_components/angular-ui-router/release/angular-ui-router.js')}}"></script>
+
         
-        <link rel="stylesheet" href="{{asset('bower_components/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">   
-        <link rel="stylesheet" href="{{asset('bower_components/mdbootstrap/css/mdb.min.css')}}" rel="stylesheet" type="text/css">    
-        <link rel="stylesheet" href="{{asset('node_modules/bootstrap/dist/css/bootstrap.min.css')}}"  type="text/css">
-        <link rel="stylesheet" href="{{asset('bower_components/mdbootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">     
-        
-        <script src="{{asset('node_modules/jquery/dist/jquery.min.js')}}"></script>
+
         <script src="{{asset('node_modules/popper.js/dist/umd/popper.min.js')}}"></script>
         <script src="{{asset('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('bower_components/angular-route/angular-route.js')}}"></script>
 
-        <script src="{{asset('bower_components/mdbootstrap/js/popper.min.js')}}"></script>
-        <script src="{{asset('bower_components/mdbootstrap/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('bower_components/mdbootstrap/js/mdb.min.js')}}"></script>
+         <!-- Dashboard CSS Styles -->
+         <link href="{{asset('css/dashboard.css')}}" rel="stylesheet" type="text/css"/>
 
-        {{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script> --}}
-
+       <!--  {{--  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script> --}}
+ -->
         <!-- Custom Input Select Directive for List Filtering and Mulitple Selections  -->
         <link href="{{asset('bower_components/angular-selector/dist/angular-selector.css')}}" rel="stylesheet" type="text/css"/>
         <script src="{{asset('bower_components/angular-selector/dist/angular-selector.js')}}"></script>

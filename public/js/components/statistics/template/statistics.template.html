@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <form name="vm.statsForm" ng-submit="vm.getStats()">
                         <div class="row">
-                            <div class="form-group col-md-4 col-4 col-sm-4 col-lg-4">
+                            <div class="form-group col-md-5">
                                 Program
                                 <select selector
                                 name="program" 
@@ -21,38 +21,42 @@
                                 </select>
                                 <!-- {{vm.stat.program.name}} for getting specific data -->
                             </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                               Period
+                               <select name="period" class="md-form form-control"
+                               ng-init = "vm.statsCriterions.period = vm.periods[0]"
+                               ng-options = "p as p for p in vm.periods"
+                               ng-model="vm.statsCriterions.period"
+                               >
+                               </select>
+                            </div>
                             <!-- Report Date Month -->
-                            <div class="form-group col-md-6 col-6 col-sm-6 col-lg-6">
-                                Month
-                                <div class="row" name="month">
-                                    <div class="col-md-6 col-6 col-sm-6 col-lg-6">
-                                        <select selector 
-                                        name="month_from"
-                                        ng-init="vm.statsCriterions.month.to = vm.months[0].num"
-                                        model="vm.statsCriterions.month.to"
-                                        options="vm.months"
+                            <div class="form-group col-md-5 d-flex flex-column" ng-show="vm.statsCriterions.period != 'Year'">
+                                {{vm.statsCriterions.period}}
+                                <div class="md-form flex-pill m-0 px-1">
+                                    <select selector
+                                        name="period_range_from"
+                                        ng-init="vm.statsCriterions.periods.from = vm.ranges[vm.statsCriterions.period[0].num]"
+                                        options="vm.ranges[vm.statsCriterions.period] " 
+                                        require="vm.statsCriterions.period != 'Year'"
                                         label-attr="name"
-                                        value-attr="num"
-                                        require="true">
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 col-6 col-sm-6 col-lg-6">
-                                        <select selector 
-                                        name="month_from"
-                                        ng-init="vm.statsCriterions.month.from = vm.months[0].num"
-                                        model="vm.statsCriterions.month.from"
-                                        options="vm.months"
-                                        label-attr="name"
-                                        value-attr="num"
-                                        require="true">
-                                        </select>
-                                    </div>
-
+                                        model="vm.statsCriterions.periods.from"
+                                    >
+                                    </select>
+                                </div>
+                                   <!--  {{vm.statsCriterions.periods.from.name}} -->
+                                <div class="text-danger font-weight-bold" 
+                                    ng-messages="vm.fuseErr('period_range')" 
+                                    ng-show="vm.statsForm.period_range_from.$invalid || vm.statsForm.period_range_to.$invalid"
+                                    ng-messages-multiple>
+                                    <div ng-messages-include="js/components/statistics/messages/messages.html"></div>
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-2 col-2 col-sm-2 col-lg-2">
+                            <div class="form-group col-md-3">
                                 Year
                                 <select selector 
                                 class="" 
@@ -65,6 +69,11 @@
                                 >
                                 </select>
                             </div>
+                        </div>
+                            <!-- <div class="md-form">
+                                <input type="text" id="materialRegisterFormFirstName" class="form-control">
+                                <label for="materialRegisterFormFirstName">First name</label>
+                            </div> -->
 
                         </div>
 

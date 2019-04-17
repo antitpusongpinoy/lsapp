@@ -30,6 +30,11 @@
             {num:11,name:"November"},
             {num:12,name:"December"},
         ];
+        vm.periods = ['Year','Quarter','Month'];
+        vm.ranges = {
+            Quarter:[{name:'1st',num:1},{name:'2nd',num:2},{name:'3rd',num:3},{name:'4th',num:4}],
+            Month:vm.months
+        }
         vm.programs = [
             {id:"morbidity", name:"Morbidity Diseases"},
             {id:"childcare", name:"Child Care"},

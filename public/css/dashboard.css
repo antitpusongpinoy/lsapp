@@ -1,0 +1,267 @@
+/* CUSTOM CSS FOR WAH DASHBOARD */
+
+.text-transparent{
+    color: transparent !important;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+
+    /*
+        Introduced in IE 10.
+        See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Google Map CSS */
+#map{
+    height: 500px;
+    width: 100%;
+}
+
+/* Bootstrap 4 Carousel Indicators (the dots on the bottom) */
+.carousel-indicators li {
+    background-color: #919191 !important; 
+}
+.carousel-indicators .active {
+    background-color: #2e2e2e !important;
+}
+
+/* MDBootstrap CSS Override */
+table th{
+    font-size:inherit !important;
+    font-weight: 700 !important;
+}
+/* Overrides the error message position to be closer to the form input */
+.help-block{
+    margin-top:-24px !important; /* MDBootstrap/Bootstrap4 usually has a bottom margin of 24px */
+}
+
+/* 
+    Allocates additional space for Bootstrap select forms 
+    Suffix Name 'N/A' was being obscured because of the lack of space
+*/
+select{
+    margin-right: 5px !important; 
+}
+
+.text-grey{
+    color: #757575 !important;
+}
+
+
+/* Angular Selector CSS Override */
+
+    /* General Selector Modified Styles made to look like Material Design */
+.selector-input { 
+    font-size: inherit !important;
+    border: none !important;
+    border-radius: 0px !important;
+    border-bottom: 1px solid #ced4da !important;
+    -webkit-box-shadow: none !important; 
+    box-shadow: none !important;
+    background-color: transparent !important; 
+    background-image: none !important;
+}
+    /* Options Group Label Style */
+.selector-dropdown > .selector-optgroup {
+    background:#1e88e5 !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* .selector-input:focus{
+    border-bottom: 50px solid #4285f4 !important;
+} */
+
+    /* Selector Caret Modified Styles */
+.selector-container.has-value.remove-button .selector-helper { border-left: none !important; }
+
+
+/* OverlayScrollbars CSS Overrides*/
+.scroller {
+    position: relative !important; /* relative or absolute positioning required by Perfect Scrollbar */
+    max-height: 450px;  /* height must be limited to induce scrolling behavior */
+}
+/* .os-theme-dark > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle {
+    
+} */
+
+
+/* Statistics Tables CSS */
+
+/* .tbl-container{
+    overflow: scroll !important;
+    display:block !important;
+    position: absolute !important;
+    height: 400px !important;
+} */
+
+/* .table {
+    height: 450px !important;
+} */
+/* #statsTable > thead > tr > th,
+#statsTable > thead > tr > th > div{ */
+
+/* Fixed Table Header  */
+#statsTable > thead th{
+    white-space: nowrap;
+}
+
+#statsTable > thead tr:first-child th{
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    top: 0;
+    background-color: #007bff; 
+    text-align: center;
+}
+
+#statsTable > thead tr:nth-child(2) th{
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    top: 24px; /* displacement from the top */
+    background-color: #007bff; 
+    text-align: center;
+}
+
+#statsTable > thead tr:nth-child(3) th{
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    top: 48px; /* displacement from the top */
+    text-align: center;
+    background-color: #007bff; 
+}
+
+#statsTable > thead tr:nth-child(4) th{
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    top: 72px; /* displacement from the top */
+    text-align: center;
+    background-color: #007bff; 
+}
+
+
+/* Fixed First Column */
+#statsTable > thead > tr > th:first-child {
+    left:0;
+    z-index:1;
+    height:inherit !important;
+    width: 100px !important;
+    border: inherit !important;
+
+}
+#statsTable > tbody > tr > td:first-child {
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    left: 0;
+    width: 100px !important;
+    background-color: white !important;
+    white-space: nowrap !important;
+    box-shadow: -20px 0px 30px white inset;
+    /* display: block;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important; */
+}
+
+
+/* Second th and td Element Displacement (so that it won't be covered by the first column)*/
+#statsTable > thead > tr > th:nth-child(2) {
+    /* padding-left: 0px !important; */
+    padding-right: 10px !important;
+}
+
+#statsTable > tbody > tr > td:nth-child(2) {
+    /* padding-left: 0px !important; */
+}
+
+/* Table Header Alternating Colors */
+
+/* 
+    an + b Formula
+    a : cycle (step) size
+    n : counter that starts at 0
+    b : offset (beginning) value
+*/
+
+/* First Column Row */
+#statsTable > thead tr:nth-child(1) th:nth-child(2n+2){
+    background-color: #00C851;
+}
+#statsTable > thead tr:nth-child(1) th:nth-child(2n+3){
+    background-color: #ff4444;
+}
+/* Second to last child */
+#statsTable > thead tr:nth-child(1) th:nth-last-child(2){
+    background-color: #007bff;
+}
+#statsTable > thead tr:nth-child(1) th:last-child{
+    background-color: #007bff;
+}
+
+/* Second Column Row */
+#statsTable > thead tr:nth-child(2) th:nth-child(2n+2){
+    background-color: #aa66cc;
+}
+#statsTable > thead tr:nth-child(2) th:nth-child(2n+3){
+    background-color: #4285F4;
+}
+/* Second to last child */
+#statsTable > thead tr:nth-child(2) th:nth-last-child(2){
+    background-color: #007bff;
+}
+#statsTable > thead tr:nth-child(2) th:last-child{
+    background-color: #007bff;
+}
+
+/* Third Column Row */
+#statsTable > thead tr:nth-child(3) th:nth-child(2n+2){
+    background-color: #2BBBAD;
+}
+#statsTable > thead tr:nth-child(3) th:nth-child(2n+3){
+    background-color: #ffbb33;
+}
+/* Second to last child */
+#statsTable > thead tr:nth-child(3) th:nth-last-child(2){
+    background-color: #007bff;
+}
+#statsTable > thead tr:nth-child(3) th:last-child{
+    background-color: #007bff;
+}
+
+/* Fourth Column Row */
+#statsTable > thead tr:nth-child(4) th:nth-child(2n+2){
+    background-color: #757575;
+}
+#statsTable > thead tr:nth-child(4) th:nth-child(2n+3){
+    background-color: #f06361;
+}
+/* Second to last child */
+#statsTable > thead tr:nth-child(4) th:nth-last-child(2){
+    background-color: #007bff;
+}
+#statsTable > thead tr:nth-child(4) th:last-child{
+    background-color: #007bff;
+}
+
+
+
+
+/* Progress Bars */
+.progress{
+    display: block; 
+    position: fixed; /* or absolute */
+    top: 50%;
+    left: 25%;
+    width:50%;
+    height:100%;
+    z-index: 99;
+    background:transparent;
+}
+
+
+
+
