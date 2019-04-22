@@ -162,12 +162,23 @@
                                     >
                                 </select>
                             </div>
-                        </div>
+                        </div>  
 
                         <!-- Province -->
-
-
-
+                        <div class="row" ng-show="vm.hasAccessTo('Province')"> 
+                            <div class="col-md-3 text-right my-auto">Province</div>
+                            <div class="form-group col-md-7 my-auto">
+                                <select selector 
+                                    class="mb-4"
+                                    name="provinces"
+                                    model="vm.selectedProvinces" 
+                                    options="vm.filtered.Province"
+                                    label-attr="location_name"
+                                    disable="vm.is_national"
+                                    >
+                                </select>
+                            </div>
+                        </div>
 
 
                         <div class="row float-right mt-3">

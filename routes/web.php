@@ -17,5 +17,9 @@ Route::get('/getsampledata', 'Showdatacontroller@getData');
 Route::get('/about','Showdatacontroller@getData');
 
 Route::group(['prefix' => 'api'], function(){
+
     Route::get('get/submitted/years','Date\DatesController@getSubmittedYears');
+    Route::get('get/wah/regions','Location\RegionsController@getWAHRegions');
+    Route::get('get/wah/provinces','Location\ProvincesController@getWAHProvinces');
+    
 });

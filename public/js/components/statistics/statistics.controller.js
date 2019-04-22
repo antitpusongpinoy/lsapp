@@ -1,4 +1,4 @@
-
+(function(){
     'use strict';
 
     angular
@@ -26,6 +26,9 @@
         vm.selectedFacilities = [];
 
         vm.recentlySelected = {};
+        vm.isCmpLvlFrozen = false;
+        vm.locationsToGenerate = [];
+
         vm.periods = ['Year','Quarter','Month'];
         vm.months = [
             {num:1,name:"January"},
@@ -97,7 +100,7 @@
             return false;
         }
 
-        vm.loadAllWAHLocations = function(){
+        /* vm.loadAllWAHLocations = function(){
             $http.get('api/get/wah/regions')
             .then(function(response){
                 vm.locations.Regions = response.data;
@@ -105,6 +108,51 @@
             .catch(function(response){
                 alert('Could not retrieve active regions.');
             })
-        }
-        vm.loadAllWAHLocations();
+        } */
+            $http.get('api/get/wah/regions')
+            .then(function(response){
+                vm.locations.Region= response.data;
+                vm.locations.Region.unshift({location_code:0,location_name:'ALL Regions'});
+                vm.filtered.Region = vm.locations.Region;
+            })
+            .catch(function(response){
+                alert('Could not retrieve active regions.');
+            });
+        
+
+        // Retrieves all provinces with active facilities to populate province <select> input
+        $http.get('api/get/wah/provinces')
+        .then(function(response){
+            vm.locations.Province= response.data;
+            vm.locations.Province.unshift({region_code:0,location_code:0,location_name:'ALL Provinces'});
+            vm.filtered.Province = vm.locations.Province;
+        })
+        .catch(function(response){
+            console.log('Could not retrieve active provinces.');
+        });
+        /* 
+        $scope.$watch('vm.selectedRegions',function(newValue){
+            if(!vm.selectedRegions) return;
+            if(!vm.isCmpLvlFrozen)
+                vm.statsCriterions.cmpLvl.level = 'Region';
+            vm.filtered.Province = [];
+            vm.selectedProvinces = null;
+            vm.selectedMuncities = null;
+            vm.selectedFacilities = null;
+            if(!vm.selectedRegions)
+                vm.filtered.Province = vm.locations.Province;
+            else{
+                if(newValue.location_code > 0){
+                    vm.filtered.Province = vm.locations.Province
+                                                .filter(obj => obj.region_code == newValue.location_code);
+                    vm.filtered.Province.unshift({region_code:0,location_code:0,location_name:'ALL Provinces'});
+                }
+            }
+            vm.recentlySelected = newValue;
+
+            console.log('Region Watch');
+        }); */
+
+       
     }
+})();

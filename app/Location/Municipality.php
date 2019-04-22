@@ -4,25 +4,33 @@ namespace App\Location;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Region extends Model
+class Municipality extends Model
 {
     //
-    protected $table = 'lib_region';
-    protected $primaryKey = 'region_code';
-    public $incrementing = false;
+    protected $table = 'lib_muncity';
+    protected $primarykey = 'muncity_code';
+
+    protected $casts = [ 
+        'region_code' => 'string', 
+        'province_code' => 'string', 
+        'muncity_code' => 'string' 
+    ];
 
     protected $fillable = [
-        'region_name'
+        'region_code',
+        'province_code',
+        'muncity_name'
     ];
 
     public function facilities(){
-        return $this->hasMany('App\Location\Facility','region_code','region_code');
+        return $this->hasMany('App\Location\Facility','muncity_code','muncity_code');
     }
+
     public function wah_facilities(){
         return $this->hasManyThrough(
             'App\Location\FacilityWAH'  // Final destination model 
             ,'App\Location\Facility'    // Intermediate model
-            ,'region_code'            // foreign key at intermediate model
+            ,'muncity_code'            // foreign key at intermediate model
             ,'hfhudcode'                // foreign key at final model
             ,'hfhudcode'                // local primary key
         );
