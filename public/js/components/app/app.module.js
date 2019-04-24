@@ -7,5 +7,6 @@ angular.module('dashboard',[
         'home', // home module
         'dashboard.statistics', // statatistics module
         'map', // map module
-        'selector'
+        'selector',
+        'md.data.table' // for material design data table  bower install angular-material-data-table --save
     ]);

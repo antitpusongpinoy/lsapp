@@ -21,5 +21,7 @@ Route::group(['prefix' => 'api'], function(){
     Route::get('get/submitted/years','Date\DatesController@getSubmittedYears');
     Route::get('get/wah/regions','Location\RegionsController@getWAHRegions');
     Route::get('get/wah/provinces','Location\ProvincesController@getWAHProvinces');
-    
+    Route::get('get/wah/municipalities','Location\MunicipalitiesController@getWAHMuncities');
+    Route::get('get/wah/facilities','Location\FacilitiesController@getWAHFacilities');
+
 });

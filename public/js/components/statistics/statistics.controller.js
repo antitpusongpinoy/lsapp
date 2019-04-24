@@ -64,10 +64,11 @@
 
 
         vm.programs = [
-            {id:"morbidity", name:"Morbidity Diseases"},
             {id:"childcare", name:"Child Care"},
             {id:"mc", name:"Maternal Care"},
-            {id:"fp", name:"Family Planning"}
+            {id:"fp", name:"Family Planning"},
+            {id:"morbidity", name:"Morbidity Diseases"},
+            {id:"btml", name:"Blood Type Master List"}
         ];
 
         vm.statsCriterions = {
@@ -100,15 +101,7 @@
             return false;
         }
 
-        /* vm.loadAllWAHLocations = function(){
-            $http.get('api/get/wah/regions')
-            .then(function(response){
-                vm.locations.Regions = response.data;
-            })
-            .catch(function(response){
-                alert('Could not retrieve active regions.');
-            })
-        } */
+
             $http.get('api/get/wah/regions')
             .then(function(response){
                 vm.locations.Region= response.data;
@@ -130,7 +123,41 @@
         .catch(function(response){
             console.log('Could not retrieve active provinces.');
         });
-        /* 
+
+        // Retrieves all municipality  to populate municipality <select> input
+        $http.get('api/get/wah/municipalities')
+        .then(function(response){
+            vm.locations.Municipality = response.data;
+            vm.locations.Municipality.unshift({region_code:0,province_code:0,location_code:0,location_name:'ALL Cities/Municipalities'});
+            vm.filtered.Municipality = vm.locations.Municipality;
+        })
+        .catch(function(response){
+            alert('Could not retrieve active provinces.');
+        });
+
+        // Retrieves all facility  to populate municipality <select> input
+        $http.get('api/get/wah/facilities')
+            .then(function(response){
+                vm.locations.Facility= response.data;
+                vm.locations.Facility.unshift({region_code:0,province_code:0,muncity_code:0,location_code:0,location_name:'ALL Facilities'});
+                vm.filtered.Facility = vm.locations.Facility;
+                // vm.allLocations = vm.allLocations.concat(response.data);
+                console.log('vm.locations.Facility');
+                console.log(vm.locations.Facility);
+                // vm.initUserLocations();
+            })
+            .catch(function(response){
+                console.log('Could not retrieve active facilities.');
+            });
+
+        $scope.$watch('vm.is_national',function(newValue){
+            vm.clearSelection();
+            if(!newValue) return;
+            vm.statsCriterions.cmpLvl.level = 'National';
+            vm.recentlySelected = {location_code:0,location_name:'National'};
+            vm.locationsToGenerate.push(vm.recentlySelected);
+        });
+
         $scope.$watch('vm.selectedRegions',function(newValue){
             if(!vm.selectedRegions) return;
             if(!vm.isCmpLvlFrozen)
@@ -148,11 +175,78 @@
                     vm.filtered.Province.unshift({region_code:0,location_code:0,location_name:'ALL Provinces'});
                 }
             }
+            
             vm.recentlySelected = newValue;
 
             console.log('Region Watch');
-        }); */
+        });
 
-       
+        $scope.$watch('vm.selectedMuncities',function(newValue){
+            if(!vm.selectedMuncities) return;
+            if(!vm.isCmpLvlFrozen)
+                vm.statsCriterions.cmpLvl.level = 'Municipality';
+            vm.filtered.Facility = [];
+            vm.selectedFacilities = null;
+            if(!vm.selectedMuncities)
+                vm.filtered.Facility = vm.locations.Facility;
+            else{
+                if(newValue.location_code > 0){
+                    vm.filtered.Facility = vm.locations.Facility
+                                                .filter(obj => obj.muncity_code == newValue.location_code);
+                    vm.filtered.Facility.unshift({region_code:0,province_code:0,muncity_code:0,location_code:0,location_name:'ALL Facilities'});
+                }
+            }
+            vm.recentlySelected = newValue;
+            console.log('Munctiy Watch');
+        });
+
+        $scope.$watch('vm.selectedFacilities',function(newValue){
+            if(!vm.selectedFacilities) return;
+            if(!vm.isCmpLvlFrozen)
+                vm.statsCriterions.cmpLvl.level = 'Facility';
+            vm.recentlySelected = newValue;
+            console.log('Facility Watch');
+        });
+
+        $scope.$watch('vm.recentlySelected',function(newValue, oldValue){
+            console.log('recently selected Watch');
+            console.log(oldValue);
+            console.log(newValue);
+            if(!newValue)
+                vm.recentlySelected = vm.prevRecentlySelected;
+            vm.prevRecentlySelected = oldValue;
+        });
+
+        vm.clearSelection = function(){
+            vm.recentlySelected = {};
+            vm.selectedRegions = null;
+            vm.selectedProvinces = null;
+            vm.selectedMuncities = null;
+            vm.selectedFacilities = null;
+            vm.statsCriterions.cmpLvl.level= '';
+            vm.locationsToGenerate = [];
+
+            // Also, revert filtered locations back to all items
+            vm.filtered.Province = vm.locations.Province;
+            vm.filtered.Municipality = vm.locations.Municipality;
+            vm.filtered.Facility = vm.locations.Facility;
+        }
+        
+        $scope.selected = [];
+        
+        $scope.query = {
+            order: 'name',
+            limit: 5,
+            page: 1
+        };
+        
+        function success(desserts) {
+            $scope.desserts = desserts;
+        }
+        
+        $scope.getDesserts = function () {
+            $scope.promise = $nutrition.desserts.get($scope.query, success).$promise;
+        };
+        
     }
 })();

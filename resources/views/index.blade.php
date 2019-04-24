@@ -96,7 +96,10 @@
         <link href="{{asset('bower_components/angular-selector/dist/angular-selector.css')}}" rel="stylesheet" type="text/css"/>
         <script src="{{asset('bower_components/angular-selector/dist/angular-selector.js')}}"></script>
 
-
+            <!-- module -->
+            
+        <link href="{{asset('bower_components/angular-material-data-table/dist/md-data-table.min.css')}}" rel="stylesheet" type="text/css"/>
+        <script src="{{asset('bower_components/angular-material-data-table/dist/md-data-table.min.js')}}"></script>
         <!-- Dashboard Application Scripts -->
         <script src="{{asset('js/components/app/app.module.js')}}"></script>
         <script src="{{asset('js/components/app/app.config.js')}}"></script>

@@ -8,17 +8,15 @@
                 <div class="card-body">
                     <form name="vm.statsForm" ng-submit="vm.getStats()">
                         <div class="row">
-                            <div class="form-group col-md-5">
+                            <div class="form-group col-md-4">
                                 Program
-                                <select selector
-                                name="program" 
-                                require="true"
-                                ng-init="vm.stat.program = vm.stat.program || vm.programs[0]"
-                                label-attr="name"
-                                options = "vm.programs"
-                                model="vm.stat.program"
-                                >
-                                </select>
+                                
+                            <select name="program" class="md-form form-control" 
+                            ng-model="vm.statsCriterions.program"
+                            ng-options = "p.name as p.name for p in vm.programs"
+                            ng-init = "vm.statsCriterions.program = vm.programs[0].name"
+                            >
+                            </select>
                                 <!-- {{vm.stat.program.name}} for getting specific data -->
                             </div>
                         </div>
@@ -180,7 +178,37 @@
                             </div>
                         </div>
 
+                        <!-- Municipality -->
+                        <div class="row" ng-show="vm.hasAccessTo('Municipality')">
+                            <div class="col-md-3 text-right my-auto">City/Municipality</div>
+                            <div class="form-group col-md-7 my-auto">
+                                <select selector 
+                                    class="mb-4"
+                                    name="municipalities"
+                                    model="vm.selectedMuncities" 
+                                    options="vm.filtered.Municipality"
+                                    label-attr="location_name"
+                                    disable="vm.is_national"
+                                    >
+                                </select>
+                            </div>
+                        </div>
 
+                        <!-- Facility -->
+                        <div class="row">
+                            <div class="col-md-3 text-right my-auto">Facility</div>
+                            <div class="form-group col-md-7 my-auto">
+                                <select selector 
+                                    class="mb-4"
+                                    name="facilities"
+                                    model="vm.selectedFacilities" 
+                                    options="vm.filtered.Facility"
+                                    label-attr="location_name"
+                                    disable="vm.is_national"
+                                    >
+                                </select>
+                            </div>
+                        </div>
                         <div class="row float-right mt-3">
                             <button type="submit" class="btn btn-info waves-effect btn-lg" ng-show="!vm.isLoading"><i
                                     class="fa fa-check"></i> GENERATE</button>
@@ -190,4 +218,62 @@
                 </div>
             </div>
         </div>
+</div>
+<br><br><br>
+<div class="row col-12">
+   <!--  <md-toolbar class="md-table-toolbar md-default">
+        <div class="md-toolbar-tools">
+          <span>Blood Type Master List</span>
+        </div>
+      </md-toolbar> -->
+      <!-- exact table from live demo -->
+<md-table-container class="col-12">
+    <table md-table md-row-select multiple ng-model="selected" md-progress="promise">
+      <thead md-head md-order="" md-on-reorder="">
+        <tr md-row style="background-color:rgb(81, 121, 252); color:white;">
+          <th md-column ><span>Indicators</span></th>
+          <th md-column ><span>Total</span></th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row md-select-id="name" md-auto-select >
+          <td md-cell>A+</td>
+          <td md-cell>131</td>
+        </tr>
+        <tr md-row md-select-id="name" md-auto-select >
+            <td md-cell>A-</td>
+            <td md-cell>131</td>
+          </tr>
+          <tr md-row md-select-id="name" md-auto-select >
+            <td md-cell>B+</td>
+            <td md-cell>131</td>
+          </tr>
+          <tr md-row md-select-id="name" md-auto-select >
+            <td md-cell>B-</td>
+            <td md-cell>131</td>
+          </tr>
+          <tr md-row md-select-id="name" md-auto-select >
+            <td md-cell>AB+</td>
+            <td md-cell>131</td>
+          </tr>
+          <tr md-row md-select-id="name" md-auto-select >
+            <td md-cell>AB-</td>
+            <td md-cell>131</td>
+          </tr>
+          <tr md-row md-select-id="name" md-auto-select >
+            <td md-cell>O+</td>
+            <td md-cell>131</td>
+          </tr>
+          <tr md-row md-select-id="name" md-auto-select >
+            <td md-cell>O-</td>
+            <td md-cell>131</td>
+          </tr>
+          <tr md-row md-select-id="name" md-auto-select >
+            <td md-cell>Unknown/NA</td>
+            <td md-cell>131</td>
+          </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+   
 </div>
